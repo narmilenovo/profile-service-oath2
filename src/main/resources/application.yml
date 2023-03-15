@@ -1,1 +1,37 @@
 
+spring:
+#  If github config is used dont use this
+  application:
+    name: customer
+#  --------------------------------------------
+  datasource:
+    url: jdbc:postgresql://localhost:5432/learning
+    username: postgres
+    password: imu123
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+      ddl-auto: none
+    show-sql: true
+    generate-ddl: true
+    properties:
+      hibernate:
+        format_sql: true
+
+#Github config method
+#spring:
+#  application:
+#    name: customer
+#  config:
+#    import: optional:configserver:http://localhost:8191
+server:
+  port: 9001
+security:
+  oauth2:
+    resource:
+      token-info-uri: http://localhost:9191/oauth/check_token
+    client:
+      client-id: demo
+      client-secret: 123
